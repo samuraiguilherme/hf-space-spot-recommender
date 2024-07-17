@@ -1,1 +1,13 @@
-# hf-space-spot-recommender
+---
+title: Spot Recommender
+emoji: 🌐
+colorFrom: blue
+colorTo: yellow
+sdk: static
+pinned: false
+models:
+- Xenova/detr-resnet-50
+license: mit
+---
+
+Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference

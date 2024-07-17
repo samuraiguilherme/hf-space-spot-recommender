@@ -9,16 +9,16 @@ const fileUpload = document.getElementById('upload');
 const imageContainer = document.getElementById('container');
 const example = document.getElementById('example');
 
-const EXAMPLE_URL = 'https://huggingface.co/datasets/Xenova/transformers.js-docs/resolve/main/city-streets.jpg';
+const EXAMPLE_TEXT = 'Onde surfar com pranchinha hoje no Rio de Janeiro?';
 
 // Create a new object detection pipeline
 status.textContent = 'Loading model...';
-const detector = await pipeline('object-detection', 'Xenova/detr-resnet-50');
+const recommender = await pipeline('text-generation', 'Xenova/distilgpt2');
 status.textContent = 'Ready';
 
 example.addEventListener('click', (e) => {
     e.preventDefault();
-    detect(EXAMPLE_URL);
+    detect(EXAMPLE_TEXT);
 });
 
 fileUpload.addEventListener('change', function (e) {
@@ -37,12 +37,9 @@ fileUpload.addEventListener('change', function (e) {
 
 
 // Detect objects in the image
-async function detect(img) {
-    imageContainer.innerHTML = '';
-    imageContainer.style.backgroundImage = `url(${img})`;
-
+async function detect(text) {
     status.textContent = 'Analysing...';
-    const output = await detector(img, {
+    const output = await recommender(img, {
         threshold: 0.5,
         percentage: true,
     });

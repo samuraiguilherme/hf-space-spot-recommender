@@ -6,7 +6,7 @@ colorTo: yellow
 sdk: static
 pinned: false
 models:
-- Xenova/detr-resnet-50
+- Xenova/distilgpt2
 license: mit
 ---
 
